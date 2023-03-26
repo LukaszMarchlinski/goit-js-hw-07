@@ -1,17 +1,21 @@
-import { galleryItems } from './gallery-items.js';
+import { galleryItems } from "./gallery-items.js";
 // Change code below this line
 
-const gallery = document.querySelector(".gallery");
+const SimpleLight = document.querySelector("ul.gallery");
 
-//tworzenie galerii obrazków
-const allItems = galleryItems.map((galleryItem) => {
-    const item = `<a class="gallery__item" href="${galleryItem.original}">
-  <img class="gallery__image" src="${galleryItem.preview}" alt="${galleryItem.description}" />
-</a>`;
-    return item; 
-})
-    .join('');
+const SimpleLightGallery = galleryItems
+  .map(
+    (image) =>
+      `<a class="gallery__item" href="${image.original}">
+  <img class="gallery__image" src="${image.preview}" alt="${image.description}" />
+</a>`
+  )
+  .join("");
 
-gallery.innerHTML = allItems;
+SimpleLight.insertAdjacentHTML("afterbegin", SimpleLightGallery);
 
-var lightbox = new SimpleLightbox('.gallery a', {captionsData: 'alt', captionDelay: 250});
+const lightbox = new SimpleLightbox(".gallery a", {
+  captions: true,
+  captionsData: "alt",
+  captiondelay: 250,
+});
